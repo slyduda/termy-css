@@ -14,6 +14,8 @@ try:
 except:
     pass
 
+
+STATS = [0] * LENGTH
 ITERATION = 0
 
 key_dict = {
@@ -99,9 +101,10 @@ def generate_detail(key:str="", contents:str="", style:str="", classes:list=[], 
 
 
 def generate_keyboard_details(depth:int, keys:list=[], pool:list=[]):
+    global GUESSES
     content = ""
     if depth == 1:
-        content += generate_detail(key="ee", contents=create_element(tag="div", style="margin-bottom:480px;"), classes=["kb__label", "kb__ee", 'kb__%s-%s' % (ITERATION, depth)], style="z-index: %s" % (20 - ITERATION))
+        content += generate_detail(key="ee", contents=create_element(tag="div", style="margin-bottom:%spx;" % (60 * GUESSES * 2)), classes=["kb__label", "kb__ee", 'kb__%s-%s' % (ITERATION, depth)], style="z-index: %s" % (20 - ITERATION))
     for key in keys:
         new_pool = []
         for word in pool:
@@ -114,7 +117,7 @@ def generate_keyboard_details(depth:int, keys:list=[], pool:list=[]):
             content += generate_detail(key=key, contents=detail_contents, classes=["kb__label", "kb__%s" % (key), 'kb__%s-%s' % (ITERATION, depth)], depth=depth)
     return content
 
-STATS = [0, 0, 0, 0]
+
 def generate_keyboard_instance(depth:int=0, pool:list=[]):
     global STATS, LENGTH
     depth += 1
@@ -126,8 +129,8 @@ def generate_keyboard_instance(depth:int=0, pool:list=[]):
                 accepted.append(word[depth - 1].lower())
         contents = generate_keyboard_details(depth, keys=accepted, pool=pool)
         STATS[depth-1] = STATS[depth-1] + len(accepted)
-    image = create_element(tag='img', src='https://raw.githubusercontent.com/slyduda/termy-keyboards/main/disabled-keyboard.png', classes=['kb__image'], style="z-index:%s" % (depth))
-    # image = create_element(tag='div', style="position:absolute;background:gray;width:400px;height:180px;bottom:0;left:-200px;z-index:%s" % (depth))
+    # image = create_element(tag='img', src='https://raw.githubusercontent.com/slyduda/termy-keyboards/main/disabled-keyboard.png', classes=['kb__image'], style="z-index:%s" % (depth))
+    image = create_element(tag='div', style="position:absolute;background:rgba(17,24,39);width:400px;height:180px;bottom:0;left:-200px;z-index:%s" % (depth))
     # image = ""
     return image + contents
 
@@ -138,26 +141,46 @@ def generate_keyboard():
     return create_element(tag="div", contents=generate_keyboard_instance(pool=word_characters), classes=["kb__%s"% (ITERATION), "kb"])
 
 
+def generate_grid():
+    global GUESSES, LENGTH
+    rows = ""
+    for i in range(GUESSES):
+        cells = ""
+        for j in range(LENGTH):
+            cells += create_element(tag="div", classes=["cell"])
+        rows += create_element(tag="div", classes=['grid-row'], contents=cells)
+    return create_element(tag="section", classes=['grid'], contents=rows)
+
 def main():
-    global GUESSES
-    contents = ""
+    global GUESSES, LENGTH
+    contents = create_element(tag="div", style="background:rgba(17,24,39);height:200px;width:400px;position:absolute;bottom:0")
     for i in range(GUESSES):
         contents = generate_keyboard() + contents
 
     contents = create_element(tag="section", contents=contents, id="k-wrapper")
-
+    grid = generate_grid()
+    
+    # Change some stuff in the inline.html file
     filedata = None
-    # Change some stuff in the pre.html file
     with open('src/inline.html', 'r') as file:
         filedata = file.read()
-
-    filedata = filedata.replace('{{ }}', contents)
-    filedata = filedata.replace('inline.css', 'index.css')
+        filedata = filedata.replace('{{ keyboard }}', contents)
+        filedata = filedata.replace('{{ grid }}', grid)
+        filedata = filedata.replace('inline.css', 'index.css')
 
     with open('dist/index.html', 'w') as file:
         file.write(filedata)
 
-    shutil.copyfile('src/inline.css','dist/index.css')
+    # Change some stuff in the pre.css file
+    cssdata = None
+    with open('src/inline.css', 'r') as file:
+        cssdata = file.read()
+        cssdata = cssdata.replace('guesses: 0', 'guesses: %s' % (GUESSES))
+        cssdata = cssdata.replace('length: 0', 'length: %s' % (LENGTH))
+
+    with open('dist/index.css', 'w') as file:
+        file.write(cssdata)
+
     B = os.path.getsize('dist/index.html')
     print(STATS)
     print('%skb' % (B/(1024)))
