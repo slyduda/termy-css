@@ -128,7 +128,7 @@ def generate_keyboard_instance(depth:int=0, pool:list=[]):
         STATS[depth-1] = STATS[depth-1] + len(accepted)
     image = create_element(tag='img', src='https://raw.githubusercontent.com/slyduda/termy-keyboards/main/disabled-keyboard.png', classes=['kb__image'], style="z-index:%s" % (depth))
     # image = create_element(tag='div', style="position:absolute;background:gray;width:400px;height:180px;bottom:0;left:-200px;z-index:%s" % (depth))
-    image = ""
+    # image = ""
     return image + contents
 
 
