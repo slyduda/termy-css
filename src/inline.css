@@ -287,10 +287,10 @@ details { position: relative }
 .r__3-3.result { top: -560px }
 .r__3-4.result { top: -560px }
 
-.r__4-1.choice { top: calc(var(--guesses) * 60px - 20px) }
-.r__4-2.choice { top: calc(var(--guesses) * 60px - 20px) }
-.r__4-3.choice { top: calc(var(--guesses) * 60px - 20px) }
-.r__4-4.choice { top: calc(var(--guesses) * 60px - 20px) }
+.r__4-1.choice { top: calc(var(--guesses) * -60px - 20px) }
+.r__4-2.choice { top: calc(var(--guesses) * -60px - 20px) }
+.r__4-3.choice { top: calc(var(--guesses) * -60px - 20px) }
+.r__4-4.choice { top: calc(var(--guesses) * -60px - 20px) }
 .r__4-1.result { top: -500px }
 .r__4-2.result { top: -500px }
 .r__4-3.result { top: -500px }

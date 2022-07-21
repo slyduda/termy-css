@@ -1,7 +1,9 @@
 import shutil
 import os
+import sys
 import random
 from util.termy import solve
+
 
 # get all argument passed when script was ran
 WORD = None
