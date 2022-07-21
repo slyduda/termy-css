@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   fill="#000000"
+   viewBox="0 0 30 30"
+   width="30px"
+   height="30px"
+   version="1.1"
+   id="svg1060"
+   sodipodi:docname="icons8-info.svg"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1064" />
+  <sodipodi:namedview
+     id="namedview1062"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     showgrid="false"
+     inkscape:zoom="9.5695118"
+     inkscape:cx="30.72257"
+     inkscape:cy="21.4222"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg1060" />
+  <path
+     id="path1058"
+     style="fill:#ffffff"
+     d="M 15 3 C 8.3730066 3 3 8.3730066 3 15 C 3 21.626993 8.3730066 27 15 27 C 21.626993 27 27 21.626993 27 15 C 27 8.3730066 21.626993 3 15 3 z M 15 8.5 C 15.827999 8.5 16.5 9.1720008 16.5 10 C 16.5 10.827999 15.827999 11.5 15 11.5 C 14.172001 11.5 13.5 10.827999 13.5 10 C 13.5 9.1720008 14.172001 8.5 15 8.5 z M 15.265625 12.628906 C 15.429994 12.631906 15.595108 12.629968 15.759766 12.628906 C 16.320258 12.646586 16.333387 13.160951 16.341797 13.15625 L 16.341797 18.396484 C 16.341811 18.562656 16.992245 18.749203 17.345703 18.929688 C 17.995679 19.43141 18.0574 19.724059 18.074219 20.480469 C 18.110643 20.773921 18.060085 21.111328 17.71875 21.111328 L 12.09375 21.111328 C 11.75856 21.111328 11.900574 20.534281 11.904297 19.941406 C 11.97146 19.124044 12.455791 18.890985 13.269531 18.632812 C 13.515807 18.606078 13.71487 18.322394 13.714844 18.166016 L 13.714844 15.644531 C 13.714805 15.414115 13.384459 15.489245 13.216797 15.423828 L 12.115234 15.21875 C 11.774267 14.890009 11.82532 14.338961 11.837891 13.902344 C 11.846951 13.620848 11.952807 13.26164 12.287109 13.265625 C 13.280663 13.056069 14.269315 12.823396 15.265625 12.628906 z " />
+  <g
+     aria-label="i"
+     id="text2367"
+     style="font-size:40px;line-height:1.25;font-family:Sylfaen;-inkscape-font-specification:'Sylfaen, Normal'"
+     transform="translate(15.178413,13.375813)" />
+</svg>
