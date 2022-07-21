@@ -3,8 +3,17 @@ import os
 import random
 from util.termy import solve
 
-LENGTH = 3
-GUESSES = 1
+# get all argument passed when script was ran
+WORD = None
+LENGTH = 4
+GUESSES = 4
+try:
+    WORD = sys.argv[1]
+    LENGTH = int(sys.argv[2])
+    GUESSES = int(sys.argv[3])
+except:
+    pass
+
 ITERATION = 0
 
 key_dict = {
@@ -43,12 +52,7 @@ text_file = open("constants/%sLW.txt" % (LENGTH), "r")
 data = text_file.read()
 words = data.split()
 
-# get the argument passed when script was ran
-WORD = None
-try:
-    WORD = sys.argv[1]
-except:
-    pass
+
 
 # If a word wasn't supplied select a random word
 if not WORD:
