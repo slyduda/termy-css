@@ -90,8 +90,9 @@ def generate_detail(key:str="", contents:str="", style:str="", classes:list=[], 
     margin = ""
     # if depth == LENGTH: # We take this out due to the error in previous siblings (enter must be accessible at the very start)
     #     margin = create_element(tag="div", style="margin-bottom:240px")
+    contents = create_element(tag="div", style="position:relative;top:180px;z-index:%s"%(depth),contents=contents)
     contents = summary + contents + choice + result + margin
-    return create_element(tag="details", contents=contents)
+    return create_element(tag="details", contents=contents, style="position:absolute;background:gray;width:400px;height:180px;bottom:0;left:0;display:flex;justify-content:center")
 
 
 def generate_keyboard_details(depth:int, keys:list=[], pool:list=[]):
@@ -122,7 +123,7 @@ def generate_keyboard_instance(depth:int=0, pool:list=[]):
                 accepted.append(word[depth - 1].lower())
         contents = generate_keyboard_details(depth, keys=accepted, pool=pool)
         STATS[depth-1] = STATS[depth-1] + len(accepted)
-    image = create_element(tag='img', src='https://raw.githubusercontent.com/slyduda/termy-keyboards/main/disabled-keyboard.png', classes=['kb__image'], style="z-index:%s" % (depth))
+    # image = create_element(tag='img', src='https://raw.githubusercontent.com/slyduda/termy-keyboards/main/disabled-keyboard.png', classes=['kb__image'], style="z-index:%s" % (depth))
     # image = create_element(tag='div', style="position:absolute;background:gray;width:400px;height:180px;bottom:0;left:-200px;z-index:%s" % (depth))
     image = ""
     return image + contents
