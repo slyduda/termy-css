@@ -1,7 +1,10 @@
 import shutil
+import os
+import random
+from util.termy import solve
 
-LENGTH = 4
-GUESSES = 4
+LENGTH = 3
+GUESSES = 1
 ITERATION = 0
 
 key_dict = {
@@ -36,17 +39,29 @@ key_dict = {
 }
 
 # Get all words from 4 Letter Word File
-text_file = open("constants/4LW.txt", "r")
+text_file = open("constants/%sLW.txt" % (LENGTH), "r")
 data = text_file.read()
 words = data.split()
+
+# get the argument passed when script was ran
+WORD = None
+try:
+    WORD = sys.argv[1]
+except:
+    pass
+
+# If a word wasn't supplied select a random word
+if not WORD:
+    WORD = random.choice(words).lower()
+PUZZLE = [char for char in WORD]
 
 # Termy algorithms
 word_characters = []
 
 for word in words:
     c = [char.lower() for char in word]
-    if len(c) != 4:
-        print("A WORD IS NOT 4 LETTERS")
+    if len(c) != LENGTH:
+        print("A WORD IS NOT %s LETTERS" % (LENGTH))
         exit()
     word_characters.append(c)
 
@@ -60,14 +75,18 @@ def create_element(tag:str="div", contents:str="", style:str="", classes:list=[]
     return "<%s%s%s%s>%s</%s>" % (tag, classes, style, k, contents, tag)
 
 
-def generate_detail(key:str="", contents:str="", style:str="", classes:list=[], depth:int=1):
+def generate_detail(key:str="", contents:str="", style:str="", classes:list=[], depth:int=1, completed:str=""):
     global LENGTH
     summary = create_element(tag="summary", contents=key_dict[key], style=style, classes=classes)
     choice = ""
     result = ""
     if key != "ee" and key != "dd":
         choice = create_element(tag="div", contents=key_dict[key], classes=['r__%s-%s' % (ITERATION, depth), 'choice'])
-        result = create_element(tag="div", contents=key_dict[key], classes=['r__%s-%s' % (ITERATION, depth), 'result'])
+        if completed:
+            status = solve(PUZZLE, completed)
+            for i in range(LENGTH):
+                result_type = 'correct' if status[i] == 2 else 'present' if status[i] == 1 else 'absent'
+                result += create_element(tag="div", contents=key_dict[completed[i]], classes=['r__%s-%s' % (ITERATION, i + 1), 'result', result_type])
     margin = ""
     # if depth == LENGTH: # We take this out due to the error in previous siblings (enter must be accessible at the very start)
     #     margin = create_element(tag="div", style="margin-bottom:240px")
@@ -85,7 +104,10 @@ def generate_keyboard_details(depth:int, keys:list=[], pool:list=[]):
             if word[depth - 1].lower() == key:
                 new_pool.append(word)
         detail_contents = generate_keyboard_instance(depth, pool=new_pool)
-        content += generate_detail(key=key, contents=detail_contents, classes=["kb__label", "kb__%s" % (key), 'kb__%s-%s' % (ITERATION, depth)], depth=depth)
+        if len(new_pool) == 1:
+            content += generate_detail(key=key, contents=detail_contents, classes=["kb__label", "kb__%s" % (key), 'kb__%s-%s' % (ITERATION, depth)], depth=depth, completed=new_pool[0])
+        else:
+            content += generate_detail(key=key, contents=detail_contents, classes=["kb__label", "kb__%s" % (key), 'kb__%s-%s' % (ITERATION, depth)], depth=depth)
     return content
 
 STATS = [0, 0, 0, 0]
@@ -100,7 +122,9 @@ def generate_keyboard_instance(depth:int=0, pool:list=[]):
                 accepted.append(word[depth - 1].lower())
         contents = generate_keyboard_details(depth, keys=accepted, pool=pool)
         STATS[depth-1] = STATS[depth-1] + len(accepted)
-    image = create_element(tag='img', src='https://raw.githubusercontent.com/slyduda/termy-keyboards/main/disabled-keyboard.png', classes=['kb__image'], style="z-index:%s" % (depth))
+    # image = create_element(tag='img', src='https://raw.githubusercontent.com/slyduda/termy-keyboards/main/disabled-keyboard.png', classes=['kb__image'], style="z-index:%s" % (depth))
+    # image = create_element(tag='div', style="position:absolute;background:gray;width:400px;height:180px;bottom:0;left:-200px;z-index:%s" % (depth))
+    image = ""
     return image + contents
 
 
@@ -130,8 +154,9 @@ def main():
         file.write(filedata)
 
     shutil.copyfile('src/inline.css','dist/index.css')
-
+    B = os.path.getsize('dist/index.html')
     print(STATS)
+    print('%skb' % (B/(1024)))
 
 # for i in range(LENGTH + 1):
 main()

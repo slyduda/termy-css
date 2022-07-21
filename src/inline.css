@@ -187,10 +187,17 @@ details { position: relative }
 #kb__4 { position: relative }
 */
 
+/*
 .kb__1-1, .kb__2-1, .kb__3-1, .kb__4-1 { z-index: 1; color: blue }
 .kb__1-2, .kb__2-2, .kb__3-2, .kb__4-2 { z-index: 2; color: red }
 .kb__1-3, .kb__2-3, .kb__3-3, .kb__4-3 { z-index: 3; color: purple }
 .kb__1-4, .kb__2-4, .kb__3-4, .kb__4-4 { z-index: 4; color: green }
+*/
+
+.kb__1-1, .kb__2-1, .kb__3-1, .kb__4-1 { z-index: 1; }
+.kb__1-2, .kb__2-2, .kb__3-2, .kb__4-2 { z-index: 2; }
+.kb__1-3, .kb__2-3, .kb__3-3, .kb__4-3 { z-index: 3; }
+.kb__1-4, .kb__2-4, .kb__3-4, .kb__4-4 { z-index: 4; }
 
 
 .result, .choice {
