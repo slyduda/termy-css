@@ -4,41 +4,44 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
   <body>
-    <div id="keyboard-initializer"></div>
-    
-    <!-- keyboards go here -->
-    {{ keyboard }}  
+    <div class="cohost-bg"></div>
+    <div id="body">
+      <div id="keyboard-initializer"></div>
+      
+      <!-- keyboards go here -->
+      {{ keyboard }}  
 
-    <!-- grid goes here -->
-    {{ grid }} 
-    
-    <section id="header">
-      <div id="header-wrapper">
-        <div style="flex: 1;">
-          <div style="padding-left: 1rem;">
-            <input id="info" class="kb__input" type="checkbox"></input>
-          <label id="info-label" for="info">
-            <img style="color: white;" src="/src/icons/info.svg" alt="" height="29">
-          </label>
+      <!-- grid goes here -->
+      {{ grid }} 
+      
+      <section id="header">
+        <div id="header-wrapper">
+          <div style="flex: 1;">
+            <div style="padding-left: 1rem;">
+              <input id="info" class="kb__input" type="checkbox"></input>
+            <label id="info-label" for="info">
+              <img style="color: white;" src="/src/icons/info.svg" alt="" height="29">
+            </label>
+          </div>
         </div>
-      </div>
-      <a id="title" href="https://termy.gg" target="_blank">
-        <div>
-          TERMY
-          <span id="title-accent">LITE</span>
-        </div>
-      </a>
-      <div style="flex: 1; justify-content: end; display: flex; ">
-        <!-- Would like to plug a tip jar 🥲
-        <a style="padding-right: 1rem;" href="https://ko-fi.com/slyduda" target="_blank">
-          <img style="color: white;" src="/src/icons/piggy-bank.svg" height="32" alt="">
+        <a id="title" href="https://termy.gg" target="_blank">
+          <div>
+            TERMY
+            <span id="title-accent">LITE</span>
+          </div>
         </a>
-        -->
-      </div>
-      </div>
-    </section>
+        <div style="flex: 1; justify-content: end; display: flex; ">
+          <!-- Would like to plug a tip jar 🥲
+          <a style="padding-right: 1rem;" href="https://ko-fi.com/slyduda" target="_blank">
+            <img style="color: white;" src="/src/icons/piggy-bank.svg" height="32" alt="">
+          </a>
+          -->
+        </div>
+        </div>
+      </section>
 
-    <section id="header-hider">
-    </section>
+      <section id="header-hider">
+      </section>
+    </div>
   </body>
 </html>

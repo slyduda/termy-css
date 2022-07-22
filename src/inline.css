@@ -1,36 +1,10 @@
 
 
 :root {
-  --g: rgba(16,185,129);
-  --y: rgba(251,191,36);
-  --mg: rgba(107,114,128);
-  --dg: rgba(55,65,81);
-  --p: rgba(17,24,39);
-  --n00: 0;
-  --n01: 1;
-  --n02: 2;
-  --n03: 3;
-  --n04: 4;
-  --n05: 5;
-  --n06: 6;
-  --n07: 7;
-  --n08: 8;
-  --n09: 9;
-  --n10: 10;
-  --n11: 11;
-  --n12: 12;
-  --n13: 13;
-  --n14: 14;
-  --n15: 15;
-  --n16: 16;
-  --n17: 17;
-  --n18: 18;
-  --n19: 19;
   --left: 0px;
   --bottom: 0px;
   --length: 0;
   --guesses: 0;
-  --keyboard-offset: 100px;
 }
     
 html, body {
@@ -43,7 +17,18 @@ html, body {
 }
 
 body {
-  background: var(--p);
+  background: rgba(17,24,39);
+}
+
+.cohost-bg {
+  z-index:-5;
+  position:
+  absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  background:rgba(17,24,39);;
 }
 
 a:link {
@@ -68,6 +53,7 @@ section {
   border-bottom-width: 1px;
   border-color: rgba(55, 65, 81);
 }
+
 #header-wrapper {
   z-index: 2;
   display: flex;
@@ -78,12 +64,21 @@ section {
   justify-content: space-between;
   align-items: center;
 }
+
 #header-hider {
   height: 80px;
   width: 100%;
-  background: var(--p);
+  background: rgba(17,24,39);
   top: 0px;
   position: absolute;
+}
+
+#footer-hider {
+  background:rgba(17,24,39);
+  height:100vw;
+  width:100%;
+  position:absolute;
+  top:-200px;
 }
 
 #title {
@@ -106,7 +101,7 @@ section {
   position: absolute;
   bottom: -8px;
   right: -24px;
-  color: var(--g);
+  color: rgba(16,185,129);
 }
 
 .grid {
@@ -119,22 +114,26 @@ section {
   align-content: center;
   z-index: -2;
 }
+
 .grid-row {
   
   display: flex; 
   justify-content: center; 
   align-content: center;
 }
+
 .grid-row:not(:last-child) {
   margin-bottom: .25rem;
 }
+
 .cell {
-    border: 2px solid rgba(55,65,81);
-    box-sizing: border-box;
-    display: inline-block;
-    height: 56px;
-    width: 56px;
-  }
+  border: 2px solid rgba(55,65,81);
+  box-sizing: border-box;
+  display: inline-block;
+  height: 56px;
+  width: 56px;
+}
+  
 .cell {
   margin-right: .25rem;
   z-index: 1;
@@ -152,7 +151,7 @@ section {
   list-style: none;
   font-size: .75rem;
   font-weight: 700;
-  background: var(--mg);
+  background: rgba(107,114,128);
 }
 
 .kb__image {
@@ -164,11 +163,10 @@ section {
 #k-wrapper {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
   
 #keyboard-initializer {
-  height: calc(calc(var(--guesses) * 60px + calc( 2 * var(--keyboard-offset))) + 80px );
+  height: var(--keyboard-initializer);
 }
   
 .kb {
@@ -179,6 +177,7 @@ section {
   width: 56px;
 }
 
+/*
 .kb__ee { bottom: calc(var(--n00) * 60px + var(--bottom)); left: calc(var(--n00) * 20px + -200px + var(--left));}
 .kb__z  { bottom: calc(var(--n00) * 60px + var(--bottom)); left: calc(var(--n03) * 20px + -200px + var(--left));}
 .kb__x  { bottom: calc(var(--n00) * 60px + var(--bottom)); left: calc(var(--n05) * 20px + -200px + var(--left));}
@@ -188,7 +187,6 @@ section {
 .kb__n  { bottom: calc(var(--n00) * 60px + var(--bottom)); left: calc(var(--n13) * 20px + -200px + var(--left));}
 .kb__m  { bottom: calc(var(--n00) * 60px + var(--bottom)); left: calc(var(--n15) * 20px + -200px + var(--left));}
 .kb__dd { bottom: calc(var(--n00) * 60px + var(--bottom)); left: calc(var(--n17) * 20px + -200px + var(--left));}
-
 .kb__a  { bottom: calc(var(--n01) * 60px + var(--bottom)); left: calc(var(--n01) * 20px + -200px + var(--left));}
 .kb__s  { bottom: calc(var(--n01) * 60px + var(--bottom)); left: calc(var(--n03) * 20px + -200px + var(--left));}
 .kb__d  { bottom: calc(var(--n01) * 60px + var(--bottom)); left: calc(var(--n05) * 20px + -200px + var(--left));}
@@ -198,7 +196,6 @@ section {
 .kb__j  { bottom: calc(var(--n01) * 60px + var(--bottom)); left: calc(var(--n13) * 20px + -200px + var(--left));}
 .kb__k  { bottom: calc(var(--n01) * 60px + var(--bottom)); left: calc(var(--n15) * 20px + -200px + var(--left));}
 .kb__l  { bottom: calc(var(--n01) * 60px + var(--bottom)); left: calc(var(--n17) * 20px + -200px + var(--left));}
-
 .kb__q  { bottom: calc(var(--n02) * 60px + var(--bottom)); left: calc(var(--n00) * 20px + -200px + var(--left));}
 .kb__w  { bottom: calc(var(--n02) * 60px + var(--bottom)); left: calc(var(--n02) * 20px + -200px + var(--left));}
 .kb__e  { bottom: calc(var(--n02) * 60px + var(--bottom)); left: calc(var(--n04) * 20px + -200px + var(--left));}
@@ -209,9 +206,11 @@ section {
 .kb__i  { bottom: calc(var(--n02) * 60px + var(--bottom)); left: calc(var(--n14) * 20px + -200px + var(--left));}
 .kb__o  { bottom: calc(var(--n02) * 60px + var(--bottom)); left: calc(var(--n16) * 20px + -200px + var(--left));}
 .kb__p  { bottom: calc(var(--n02) * 60px + var(--bottom)); left: calc(var(--n18) * 20px + -200px + var(--left));}
+*/
 
-
+/*
 details { position: relative }
+*/
 
 /*
 #kb__1,
@@ -227,10 +226,12 @@ details { position: relative }
 .kb__1-4, .kb__2-4, .kb__3-4, .kb__4-4 { z-index: 4; color: green }
 */
 
-.kb__1-1, .kb__2-1, .kb__3-1, .kb__4-1 { z-index: 1; }
-.kb__1-2, .kb__2-2, .kb__3-2, .kb__4-2 { z-index: 2; }
-.kb__1-3, .kb__2-3, .kb__3-3, .kb__4-3 { z-index: 3; }
-.kb__1-4, .kb__2-4, .kb__3-4, .kb__4-4 { z-index: 4; }
+.kb__1-1, .kb__2-1, .kb__3-1, .kb__4-1, .kb__5-1, .kb__6-1 { z-index: 1; }
+.kb__1-2, .kb__2-2, .kb__3-2, .kb__4-2, .kb__5-2, .kb__6-2 { z-index: 2; }
+.kb__1-3, .kb__2-3, .kb__3-3, .kb__4-3, .kb__5-3, .kb__6-3 { z-index: 3; }
+.kb__1-4, .kb__2-4, .kb__3-4, .kb__4-4, .kb__5-4, .kb__6-4 { z-index: 4; }
+.kb__1-5, .kb__2-5, .kb__3-5, .kb__4-5, .kb__5-5, .kb__6-5 { z-index: 5; }
+.kb__1-6, .kb__2-6, .kb__3-6, .kb__4-6, .kb__5-6, .kb__6-6 { z-index: 6; }
 
 
 .result, .choice {
@@ -251,10 +252,11 @@ details { position: relative }
     border: 2px solid white;
 }
 
-.result.correct { background: var(--g) }
-.result.present { background: var(--y) }
-.result.absent { background: var(--dg) }
+.result.correct { background: rgba(16,185,129) }
+.result.present { background: rgba(251,191,36) }
+.result.absent { background: rgba(55,65,81) }
 
+/*
 .r__1-1, .r__2-1, .r__3-1, .r__4-1 { left: calc(calc(var(--length) * -60px ) / 2 + calc(var(--n00) * 60px)) }
 .r__1-2, .r__2-2, .r__3-2, .r__4-2 { left: calc(calc(var(--length) * -60px ) / 2 + calc(var(--n01) * 60px)) }
 .r__1-3, .r__2-3, .r__3-3, .r__4-3 { left: calc(calc(var(--length) * -60px ) / 2 + calc(var(--n02) * 60px)) }
@@ -295,3 +297,4 @@ details { position: relative }
 .r__4-2.result { top: -500px }
 .r__4-3.result { top: -500px }
 .r__4-4.result { top: -500px }
+*/
